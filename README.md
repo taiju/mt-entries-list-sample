@@ -8,7 +8,7 @@ iron-ajax を使って DataAPI で取得した記事一覧を ul > li で出力�
 
 ```html
 <mt-entries-list
-  base-rl="/mt/mt-data-api.cgi"
+  base-url="/mt/mt-data-api.cgi"
   version="v3"
   site-id="1"
   params='{"sortOrder":"ascend"}'
