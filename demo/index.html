@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>mt-entries-list demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../mt-entries-list.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        mt-entries-list {
+          --mt-entries-list-item: {
+            list-style-type: square;
+          };
+          --mt-entries-list-item-anchor-link: {
+            color: inherit;
+            text-decoration: none;
+          };
+          --mt-entries-list-item-anchor-visited: {
+            color: inherit;
+          };
+          --mt-entries-list-item-anchor-hover: {
+            text-decoration: underline;
+          };
+        }
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic mt-entries-list demo</h3>
+      <demo-snippet>
+        <template>
+          <mt-entries-list
+            base-url="http://localhost:5000/mt/mt-data-api.cgi"
+            site-id="1"
+            params='{"sortOrder":"ascend"}'></mt-entries-list>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

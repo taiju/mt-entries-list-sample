@@ -1,0 +1,77 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+
+<dom-module id="mt-entries-list">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      ul {
+        @apply --mt-entries-list;
+      }
+      li {
+        @apply --mt-entries-list-item;
+      }
+      a:link {
+        @apply --mt-entries-list-item-anchor-link;
+      }
+      a:visited {
+        @apply --mt-entries-list-item-anchor-visited;
+      }
+      a:hover {
+        @apply --mt-entries-list-item-anchor-hover;
+      }
+      a:active {
+        @apply --mt-entries-list-item-anchor-active;
+      }
+    </style>
+    <iron-ajax
+      auto
+      url="[[baseUrl]]/[[version]]/sites/[[siteId]]/entries"
+      params="[[params]]"
+      handle-as="json"
+      last-response="{{response}}"></iron-ajax>
+    <template is="dom-if" if="[[response]]">
+      <ul>
+        <template is="dom-repeat" items="[[response.items]]" as="entry">
+          <li><a href="[[entry.permalink]]" title="[[entry.excerpt]]">[[entry.title]]</a></li>
+        </template>
+      </ul>
+    </template>
+  </template>
+
+  <script>
+    /**
+     * `mt-entries-list`
+     *
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MtEntriesList extends Polymer.Element {
+      static get is() { return 'mt-entries-list'; }
+      static get properties() {
+        return {
+          baseUrl: {
+            type: String,
+            value: ''
+          },
+          version: {
+            type: String,
+            value: 'v3'
+          },
+          siteId: {
+            type: Number
+          },
+          params: {
+            type: Object
+          }
+        };
+      }
+    }
+
+    window.customElements.define(MtEntriesList.is, MtEntriesList);
+  </script>
+</dom-module>
